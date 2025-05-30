@@ -2,7 +2,7 @@
 import { TareaService } from '@/service/Tarea';
 import Chart from 'primevue/chart';
 import ProgressSpinner from 'primevue/progressspinner';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 
 const valor = ref('0');
 const loading = ref(true);
@@ -66,6 +66,15 @@ const lineOptions = ref({
 
 let intervalo;
 
+const fondoImagen = computed(() => {
+    const num = parseFloat(valor.value);
+    if (!isNaN(num) && num > 180) {
+        return 'bg-green';
+    } else {
+        return 'bg-red';
+    }
+});
+
 onMounted(() => {
     // Función para actualizar los datos
     const actualizarDatos = () => {
@@ -118,7 +127,14 @@ onUnmounted(() => {
     <div class="vertical-container">
         <!-- Primera división - Valor dinámico -->
         <div class="top-section">
-            <span class="text-9xl font-bold text-primary">{{ valor }}°</span>
+            <div class="top-content">
+                <div class="image-container" :class="fondoImagen">
+                    <img src="@/assets/logos/human2.png" alt="Logo" class="logo-image" />
+                </div>
+                <div class="value-container">
+                    <span class="text-9xl font-bold text-primary">{{ valor }}°</span>
+                </div>
+            </div>
         </div>
 
         <!-- Segunda división - Gráfica EMG -->
@@ -152,6 +168,33 @@ onUnmounted(() => {
     border-bottom: 1px solid var(--surface-border);
 }
 
+.top-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.value-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 200px;
+    height: auto;
+}
+
 .bottom-section {
     height: 50%;
     display: flex;
@@ -163,5 +206,17 @@ onUnmounted(() => {
     width: 100%;
     height: 100%;
     padding: 1rem;
+}
+
+.bg-green {
+    background: #4caf50;
+    border-radius: 16px;
+    transition: background 0.3s;
+}
+
+.bg-red {
+    background: #ff6f61;
+    border-radius: 16px;
+    transition: background 0.3s;
 }
 </style>
