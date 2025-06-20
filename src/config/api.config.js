@@ -3,7 +3,7 @@ const API_CONFIG = {
     // URLs base para diferentes ambientes
     BASE_URL: {
         development: 'http://93.127.217.21:8081',
-        production: 'http://93.127.217.21:8081'
+        production: 'http://93.127.217.21:8050'
     },
 
     // Endpoints específicos
