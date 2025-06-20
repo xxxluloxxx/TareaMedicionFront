@@ -2,9 +2,8 @@
 const API_CONFIG = {
     // URLs base para diferentes ambientes
     BASE_URL: {
-        development: 'http://localhost:8081',
-        production: 'https://dentisys-production.up.railway.app', // Cambia esto por tu URL de producción
-        staging: 'https://staging-api.tudominio.com' // Cambia esto por tu URL de staging
+        development: 'http://93.127.217.21:8081',
+        production: 'http://93.127.217.21:8081'
     },
 
     // Endpoints específicos
