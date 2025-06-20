@@ -5,7 +5,6 @@ const API_CONFIG = {
         development: 'http://93.127.217.21:8081',
         production: 'http://93.127.217.21:8050'
     },
-
     // Endpoints específicos
     ENDPOINTS: {
         LOGIN: '/api',
